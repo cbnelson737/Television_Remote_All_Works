@@ -126,7 +126,7 @@ class Ui_MainWindow(object):
         font = QtGui.QFont()
         font.setPointSize(14)
         self.mute.setFont(font)
-        self.mute.setCheckable(True)
+        self.mute.setCheckable(False)
         self.mute.setObjectName("mute")
         self.channel_image = QtWidgets.QLabel(parent=self.centralwidget)
         self.channel_image.setGeometry(QtCore.QRect(150, 10, 250, 191))
