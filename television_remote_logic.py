@@ -37,6 +37,9 @@ class Television(QMainWindow, Ui_MainWindow):
     def power_status(self) -> None:
         """
         Method to power tv On & Off with desired statuses.
+        Begins with blank screen, channel at 0, volume at 0, volume slider at position 0.
+        When TV is powered on then powered off, interface returns to above statuses.
+        returns None
         """
         if self.__status:
             self.__status = False
@@ -56,7 +59,8 @@ class Television(QMainWindow, Ui_MainWindow):
 
     def mute_status(self) -> None:
         """
-        Method to bring volume to 0 and then back to last selected volume.
+        Method to bring volume to 0 and locks volume slider at current selected volume when engaged.
+        returns None
         """
         if self.__status:
             if self.__muted:
@@ -75,7 +79,9 @@ class Television(QMainWindow, Ui_MainWindow):
 
     def channel_up_status(self) -> None:
         """
-        Method to increase tv channel.
+        Method to increase the channel by 1.
+        Channels wrap from 9 back to 0.
+        returns None
         """
         if self.__status:
             if self.__channel < Television.MAX_CHANNEL:
@@ -114,7 +120,9 @@ class Television(QMainWindow, Ui_MainWindow):
 
     def channel_down_status(self) -> None:
         """
-        Method to decrease the channel.
+        Method to decrease the channel by 1.
+        Channels wrap from 0 back to 9.
+        returns None
         """
         if self.__status:
             if self.__channel > Television.MIN_CHANNEL:
@@ -156,7 +164,10 @@ class Television(QMainWindow, Ui_MainWindow):
 
     def volume_up_status(self) -> None:
         """
-        Method to increase volume and call to volume slider to adjust.
+        Method to increase volume by 1 and updates volume slider.
+        Automatically disengages mute function and increases volume by 1 from current volume.
+        Displays 'Already at max volume' if pressed at max volume.
+        returns None
         """
         if self.__status:
             self.__muted = False
@@ -176,7 +187,10 @@ class Television(QMainWindow, Ui_MainWindow):
 
     def volume_down_status(self) -> None:
         """
-        Method to decrease volume and call to volume slider to adjust.
+        Method to decrease volume by 1 and updates volume slider.
+        Automatically disengages mute function and decreases volume by 1 from current volume.
+        Displays 'Already at min volume' if pressed at min volume.
+        returns None
         """
         if self.__status:
             self.__muted = False
@@ -194,9 +208,10 @@ class Television(QMainWindow, Ui_MainWindow):
                 self.__muted = False
                 print('Already at min volume')
 
-    def volume_slider_status(self):
+    def volume_slider_status(self) -> None:
         """
-        Method to set volume with slider tool, volume up & down methods affect slider position.
+        Method to set volume with slider tool.
+        returns None
         """
         if self.__status:
             if self.volume_slider:
@@ -204,81 +219,90 @@ class Television(QMainWindow, Ui_MainWindow):
                 self.__volume = self.sender().value()
                 print(f'Volume is now {self.__volume}')
 
-    def channel_select_status_1(self):
+    def channel_select_status_1(self) -> None:
         """
-        Method to select channel 1 with numeric keypad.
+        Method to select channel 1 with numeric keypad. Displays Cartoon Network.
+        returns None
         """
         if self.__status:
             self.__channel = 1
             self.channel_image.setPixmap(QtGui.QPixmap('CN_Logo.png'))
             print('Cartoon Network')
 
-    def channel_select_status_2(self):
+    def channel_select_status_2(self) -> None:
         """
-        Method to select channel 2 with numeric keypad.
+        Method to select channel 2 with numeric keypad. Displays CNN.
+        returns None
         """
         if self.__status:
             self.__channel = 2
             self.channel_image.setPixmap(QtGui.QPixmap('CNN_Logo.jpg'))
             print('CNN')
 
-    def channel_select_status_3(self):
+    def channel_select_status_3(self) -> None:
         """
-        Method to select channel 3 with numeric keypad.
+        Method to select channel 3 with numeric keypad. Displays Fox News.
+        returns None
         """
         if self.__status:
             self.__channel = 3
             self.channel_image.setPixmap(QtGui.QPixmap('Fox_News_Logo.png'))
             print('Fox News')
 
-    def channel_select_status_4(self):
+    def channel_select_status_4(self) -> None:
         """
-        Method to select channel 4 with numeric keypad.
+        Method to select channel 4 with numeric keypad. Displays Nickelodeon.
+        returns None
         """
         if self.__status:
             self.__channel = 4
             self.channel_image.setPixmap(QtGui.QPixmap('Nickelodeon_Logo.png'))
             print('Nickelodeon')
 
-    def channel_select_status_5(self):
+    def channel_select_status_5(self) -> None:
         """
-        Method to select channel 5 with numeric keypad.
+        Method to select channel 5 with numeric keypad. Displays Discovery.
+        returns None
         """
         if self.__status:
             self.__channel = 5
             self.channel_image.setPixmap(QtGui.QPixmap('Discovery_Logo.jpg'))
             print('Discovery')
 
-    def channel_select_status_6(self):
+    def channel_select_status_6(self) -> None:
         """
-        Method to select channel 6 with numeric keypad.
+        Method to select channel 6 with numeric keypad. Displays ID.
+        returns None
         """
         if self.__status:
             self.__channel = 6
             self.channel_image.setPixmap(QtGui.QPixmap('ID_Logo.png'))
             print('ID')
 
-    def channel_select_status_7(self):
+    def channel_select_status_7(self) -> None:
         """
-        Method to select channel 7 with numeric keypad.
+        Method to select channel 7 with numeric keypad. Displays ESPN.
+        returns None
         """
         if self.__status:
             self.__channel = 7
             self.channel_image.setPixmap(QtGui.QPixmap('ESPN_Logo.png'))
             print('ESPN')
 
-    def channel_select_status_8(self):
+    def channel_select_status_8(self) -> None:
         """
-        Method to select channel 8 with numeric keypad.
+        Method to select channel 8 with numeric keypad. Displays GSN.
+        returns None
         """
         if self.__status:
             self.__channel = 8
             self.channel_image.setPixmap(QtGui.QPixmap('Game_Show_Network_Logo.webp'))
             print('GSN')
 
-    def channel_select_status_9(self):
+    def channel_select_status_9(self) -> None:
         """
-        Method to select channel 9 with numeric keypad.
+        Method to select channel 9 with numeric keypad. Displays Home & Garden TV.
+        returns None
         """
         if self.__status:
             self.__channel = 9
