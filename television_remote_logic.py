@@ -61,7 +61,7 @@ class Television(QMainWindow, Ui_MainWindow):
         if self.__status:
             if self.__muted:
                 self.volume_slider.setTracking(True)
-                self.volume_slider.setValue(self.__previous_volume)
+                self.volume_output.setText(f"Volume: {self.__volume}")
                 self.volume_slider.update()
                 self.volume_slider.repaint()
                 self.__muted = False
@@ -69,9 +69,8 @@ class Television(QMainWindow, Ui_MainWindow):
                 print('TV is no longer muted')
             else:
                 self.__muted = True
-                self.__previous_volume = self.__volume
+                self.volume_output.setText("Volume: 0")
                 self.volume_slider.setEnabled(False)
-                self.volume_slider.setValue(0)
                 print('TV is muted')
 
     def channel_up_status(self) -> None:
